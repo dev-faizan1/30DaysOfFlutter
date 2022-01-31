@@ -1,11 +1,19 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled/utils/routes.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  String name = "";
+  bool buttonAnime = false;
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -20,7 +28,7 @@ class LoginPage extends StatelessWidget {
             height: 10,
           ),
           Text(
-            'Welcome',
+            'Welcome $name',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           SizedBox(
@@ -31,6 +39,10 @@ class LoginPage extends StatelessWidget {
             child: Column(
               children: [
                 TextFormField(
+                  onChanged: (value) {
+                    name = value;
+                    setState(() {});
+                  },
                   decoration: InputDecoration(
                       hintText: 'Enter Username', labelText: 'Username'),
                 ),
@@ -42,14 +54,28 @@ class LoginPage extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                ElevatedButton(
-                  style: TextButton.styleFrom(
-                    minimumSize: Size(120, 40),
-                  ),
-                  onPressed: () {
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      buttonAnime = true;
+                    });
                     Navigator.pushNamed(context, MyRoutes.homeRoute);
                   },
-                  child: Text('Login'),
+                  child: Container(
+                    width: buttonAnime ? 50 : 120,
+                    height: 40,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      shape: buttonAnime ? BoxShape.circle : BoxShape.rectangle,
+                    ),
+                    child: Text(
+                      'Login',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
