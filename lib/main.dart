@@ -9,7 +9,9 @@ void main() {
       themeMode: ThemeMode.light,
       darkTheme: ThemeData(
         brightness: Brightness.dark,
+      
       ),
+      initialRoute: MyRoutes.homeRoute,
       routes: {
         MyRoutes.loginRoute: (context) => LoginPage(),
         MyRoutes.homeRoute:(context)=> HomePage(),
