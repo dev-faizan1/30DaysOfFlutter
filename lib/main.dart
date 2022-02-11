@@ -9,7 +9,7 @@ import 'package:untitled/widgets/themes.dart';
 void main() {
   runApp(
     MaterialApp(
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       theme: MyThemes.lightTheme,
       darkTheme: MyThemes.darkTheme,
       initialRoute: MyRoutes.homeRoute,
